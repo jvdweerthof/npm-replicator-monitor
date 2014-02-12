@@ -1,6 +1,6 @@
 {
   "name": "npm-replicator-monitor",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Continuous monitor for mirrored npm registries, check and reset replicator as required",
   "main": "npm-replicator-monitor.js",
   "scripts": {
