@@ -24,7 +24,8 @@
   "homepage": "https://github.com/rvagg/npm-replicator-monitor",
   "dependencies": {
     "couch-replicator-api": "0.0.0",
-    "minimist": "0.0.7"
+    "minimist": "0.0.7",
+    "xtend": "~2.1.2"
   },
   "bin": {
     "npm-replicator-monitor": "./npm-replicator-monitor.js"

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 const CouchReplicator = require('couch-replicator-api')
-    , extend          = require('util')._extend
     , argv            = require('minimist')(process.argv.slice(2))
     , fs              = require('fs')
+    , xtend           = require('xtend')
 
 
 if (!argv.c || !fs.existsSync(argv.c)) {
@@ -14,7 +14,6 @@ if (!argv.c || !fs.existsSync(argv.c)) {
 
 var config     = JSON.parse(fs.readFileSync(argv.c))
   , replicator = new CouchReplicator(config.couchUrl, config.couchUser, config.couchPass, config.db)
-  , replicatorDoc = {}
   , lastCheckpoint
 
 
@@ -44,9 +43,8 @@ function check () {
 
       setTimeout(function () {
         // Add a new Date so we ensure the rev is different (helps with determinism)
-        replicatorDoc.created_at_date = new Date()
-        extend(replicatorDoc, config.replicationDoc);
-        replicator.put(replicatorDoc, function (err) {
+        var doc = xtend(config.replicationDoc, { created_at_date: new Date() })
+        replicator.put(doc, function (err) {
           if (err)
             return console.error('Error adding replication doc:', err.message)
         })
