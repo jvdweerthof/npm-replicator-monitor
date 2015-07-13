@@ -29,6 +29,45 @@ Where config.json might look something like:
 }
 ```
 
+or for multiple replications:
+
+```json
+[
+  {
+      "couchUrl"       : "http://my.npm.mirror.foo.com:5984"
+    , "couchUser"      : "admin"
+    , "couchPass"      : "fs98dkKHs87lasl"
+    , "db"             : "registry"
+    , "checkInterval"  : 3600000
+    , "replicationDoc" : {
+          "source"     : "https://fullfatdb.npmjs.com/registry"
+        , "target"     : "registry"
+        , "continuous" : true
+        , "user_ctx"   : {
+              "name"  : "admin"
+            , "roles" : [ "_admin" ]
+         }
+      }
+  },
+  {
+      "couchUrl"       : "http://my.npm.mirror.foo.com:5984"
+    , "couchUser"      : "admin"
+    , "couchPass"      : "fs98dkKHs87lasl"
+    , "db"             : "registry2"
+    , "checkInterval"  : 3600000
+    , "replicationDoc" : {
+          "source"     : "https://fullfatdb.npmjs.com/registry2"
+        , "target"     : "registry2"
+        , "continuous" : true
+        , "user_ctx"   : {
+              "name"  : "admin"
+            , "roles" : [ "_admin" ]
+         }
+      }
+  },
+]
+```
+
 You need to ensure that you have an existing *_replicator* entry named `"registry"` for this to work.
 
 ## What?
