@@ -1,6 +1,6 @@
 {
   "name": "npm-replicator-monitor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Continuous monitor for mirrored npm registries, check and reset replicator as required",
   "main": "npm-replicator-monitor.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rvagg/npm-replicator-monitor.git"
+    "url": "https://github.com/jvdweerthof/npm-replicator-monitor.git"
   },
   "keywords": [
     "npm",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/rvagg/npm-replicator-monitor",
   "dependencies": {
-    "couch-replicator-api": "0.0.0",
+    "couch-replicator-api": "jvdweerthof/node-couch-replicator-api#009773c",
     "minimist": "0.0.7",
     "xtend": "~2.1.2"
   },
