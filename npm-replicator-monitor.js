@@ -24,7 +24,7 @@ var config     = JSON.parse(fs.readFileSync(argv.c))
 function check (id) {
   checks[id].replicator.status(function (err, status) {
     if (err)
-      return console.error('Got error from status: %s [%s %s]', err.message, checks[id].config.db, checks[id].config.couchUrl)
+      return console.error('Got error from status: %s [%s %s]', err.message.substring(100), checks[id].config.db, checks[id].config.couchUrl)
 
     if (status.checkpointed_source_seq == status.source_seq) {
       console.log('Replication up to date [%s %s]', checks[id].config.db, checks[id].config.couchUrl)
