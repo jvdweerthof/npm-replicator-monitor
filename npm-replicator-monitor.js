@@ -68,7 +68,7 @@ function main () {
 
   for (var id in config) {
   	checks[id] = {}
-    checks[id].replicator = new CouchReplicator(config[id].couchUrl, config[id].couchUser, config[id].couchPass, config[id].db)
+    checks[id].replicator = new CouchReplicator(config[id].couchUrl, config[id].couchUser, config[id].couchPass, config[id].db, (config[id].doc_id?config[id].doc_id:false))
     checks[id].lastCheckpoint = null
     checks[id].config = config[id]
     setInterval(check.bind(null, id), config[id].checkInterval)
