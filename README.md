@@ -68,7 +68,15 @@ or for multiple replications:
 ]
 ```
 
-You need to ensure that you have an existing *_replicator* entry named `"registry"` for this to work.
+You either need to ensure that you have an existing *_replicator* entry with id `"registry"` for this to work or set `"doc_id"` to the *_replicator* id like:
+
+```json
+...
+    , "db"             : "registry"
+    , "doc_id"         : "some_id_for_registry"
+    , "checkInterval"  : 3600000
+...
+```
 
 ## What?
 
