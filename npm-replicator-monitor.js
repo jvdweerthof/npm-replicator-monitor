@@ -25,7 +25,6 @@ function check (id) {
   checks[id].replicator.status(function (err, status) {
     if (err)
       return console.error('Got error from status: %s [%s %s]', err.message, checks[id].config.db, checks[id].config.couchUrl)
-
     if (status.checkpointed_source_seq == status.source_seq) {
       console.log('Replication up to date [%s %s]', checks[id].config.db, checks[id].config.couchUrl)
       checks[id].lastCheckpoint = null
@@ -68,7 +67,7 @@ function main () {
 
   for (var id in config) {
   	checks[id] = {}
-    checks[id].replicator = new CouchReplicator(config[id].couchUrl, config[id].couchUser, config[id].couchPass, config[id].db, (config[id].doc_id?config[id].doc_id:false))
+    checks[id].replicator = new CouchReplicator(config[id].couchUrl, config[id].couchUser, config[id].couchPass, config[id].db)
     checks[id].lastCheckpoint = null
     checks[id].config = config[id]
     setInterval(check.bind(null, id), config[id].checkInterval)
